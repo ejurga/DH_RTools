@@ -179,11 +179,11 @@ all_enums_per_col <- function(schema){
 #' @keywords internal
 #' @export
 get_null_value <- function(schema, x=NULL){
-  nulls <- names(schema$enums$`null value menu`$permissible_values)
+  nulls <- names(schema$enums$NullValueMenu$permissible_values)
   if (is.null(x)){
     return(nulls)
   } else {
-    value <- grep(x = nulls, pattern = x, value = TRUE)
+    value <- grep(x = nulls, pattern = x, value = TRUE, ignore.case = TRUE )
     if (length(value)==0){
       stop("No value found for query ", x, " in null value menu")
     } else {
